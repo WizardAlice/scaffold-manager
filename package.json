@@ -1,13 +1,25 @@
 {
-  "name": "pack-demo",
-  "version": "0.1.0",
-  "description": "demo to test npm and build-tool.",
+  "name": "@wizardalice/scaffold-manager",
+  "version": "0.1.1",
+  "description": "scaffold manager tools",
   "scripts": {
-    "eslint": "eslint lib --ext .ts --fix",
+    "eslint": "eslint bin lib --ext .ts --fix",
     "build": "rimraf dist && tsc && rollup -c",
     "tsup": "tsup",
     "test": "mocha",
     "prepare": "husky install"
+  },
+  "bin": {
+    "scaffold": "dist/main.js"
+  },
+  "files": [
+    "dist/**/*.js"
+  ],
+  "publishConfig": {
+    "directory": "dist",
+    "registry": "https://registry.npmjs.org/",
+    "tag": "alpha",
+    "access": "public"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
@@ -35,6 +47,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-n": "^15.2.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
@@ -52,42 +65,37 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "semver": "^7.3.7",
     "tsup": "^5.12.6",
-    "typescript": "^4.7.0-beta"
+    "typescript": "^4.6.4"
   },
   "peerDependencies": {
     "adm-zip": "^0.5.9",
-    "eslint-plugin-n": "^15.0.0",
     "log-symbols": "^5.1.0"
   },
   "dependencies": {
     "adm-zip": "^0.5.9",
     "axios": "^0.27.2",
+    "iconv-lite": "^0.6.3",
     "inquirer": "^8.2.4"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "echo \"git commit trigger husky pre-commit hook\" && lint-staged"
     }
   },
   "lint-staged": {
-    "lib/**/*.{js,jsx,ts,tsx}": [
+    "{lib,bin}/**/*.{js,jsx,ts,tsx}": [
       "eslint --fix"
     ]
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WizardAlice/pack-demo.git"
+    "url": "git+https://github.com/WizardAlice/scaffold-manager.git"
   },
   "author": "saberbk@outlook.com",
   "license": "ISC",
   "private": false,
   "bugs": {
-    "url": "https://github.com/WizardAlice/pack-demo/issues"
+    "url": "https://github.com/WizardAlice/scaffold-manager/issues"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/es/index.js",
-  "typings": "./dist/typings/index.d.ts",
-  "browser": "./dist/index.js",
-  "sideEffects": false,
-  "homepage": "https://github.com/WizardAlice/pack-demo#readme"
+  "homepage": "https://github.com/WizardAlice/scaffold-manager#readme"
 }
