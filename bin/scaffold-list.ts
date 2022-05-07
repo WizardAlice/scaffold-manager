@@ -6,6 +6,7 @@ import chalk from 'chalk';
 import logSymbols from 'log-symbols';
 import { Command } from 'commander';
 import { templateDir } from '@/lib/init';
+import { checkPathValidDirectory } from '@/lib/check-path-valid';
 
 const program = new Command();
 
@@ -17,7 +18,7 @@ program
         fs.mkdirSync(templateDir);
       }
 
-      if (fs.statSync(templateDir).isDirectory()) {
+      if (checkPathValidDirectory(templateDir)) {
         console.log(logSymbols.info, 'Local template:');
 
         const zipPathname = path.resolve(templateDir, 'zip');

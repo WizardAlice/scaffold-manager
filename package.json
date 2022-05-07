@@ -1,6 +1,6 @@
 {
   "name": "@wizardalice/scaffold-manager",
-  "version": "0.1.1",
+  "version": "0.1.10",
   "description": "scaffold manager tools",
   "scripts": {
     "eslint": "eslint bin lib --ext .ts --fix",
@@ -13,7 +13,8 @@
     "scaffold": "dist/main.js"
   },
   "files": [
-    "dist/**/*.js"
+    "dist/**/*.js",
+    "templates/zip/*.zip"
   ],
   "publishConfig": {
     "directory": "dist",
